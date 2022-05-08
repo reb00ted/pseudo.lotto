@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{baseTemplate :: layout (~{::title}, ~{::main})}">
+<head>
+    <meta charset="UTF-8">
+    <title>회차별 당첨번호</title>
+
+</head>
+<body>
+<main>
+    <div class="container">
+        <div class="py-5 text-center">
+            <h2>회차별 당첨번호</h2>
+        </div>
+        <div>
+            <div th:if="${err}">
+                <p class="field-error" th:text="${err}">오류 메시지</p>
+            </div>
+            <form th:action method="post">
+                <select name="round">
+                    <option th:each="round : ${roundList}" th:value="${round}" th:selected="${round} eq ${lottoRound.round}"><!--th:selected="${round} == ${lottoRound.round}"-->[[${round}]]회</option>
+                </select>
+                <input type="submit" />
+            </form>
+
+            <table th:if="${lottoRound} != null">
+                <thead>
+                    <tr>
+                        <th rowspan="2">회차</th>
+                        <th rowspan="2" colspan="6">당첨 번호</th>
+                        <th colspan="5">당첨 금액</th>
+                    </tr>
+                    <tr>
+                        <th>1등</th>
+                        <th>2등</th>
+                        <th>3등</th>
+                        <th>4등</th>
+                        <th>5등</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td th:text="${lottoRound.round}"></td>
+                        <td th:text="${lottoRound.lottoWinningNumbers[0]}"></td>
+                        <td th:text="${lottoRound.lottoWinningNumbers[1]}"></td>
+                        <td th:text="${lottoRound.lottoWinningNumbers[2]}"></td>
+                        <td th:text="${lottoRound.lottoWinningNumbers[3]}"></td>
+                        <td th:text="${lottoRound.lottoWinningNumbers[4]}"></td>
+                        <td th:text="${lottoRound.lottoWinningNumbers[5]}"></td>
+                        <td th:text="${lottoRound.lottoWinnings[0]}"></td>
+                        <td th:text="${lottoRound.lottoWinnings[1]}"></td>
+                        <td th:text="${lottoRound.lottoWinnings[2]}"></td>
+                        <td th:text="${lottoRound.lottoWinnings[3]}"></td>
+                        <td th:text="${lottoRound.lottoWinnings[4]}"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

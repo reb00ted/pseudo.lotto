@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{baseTemplate :: layout (~{::title}, ~{::main})}">
+<head>
+    <meta charset="UTF-8">
+    <title>복권 구입</title>
+</head>
+<style>
+input[type=checkbox] { display:none; }
+
+input[type=checkbox] + label {
+
+display: inline-block;
+
+cursor: pointer;
+
+line-height: 22px;
+
+padding-left: 22px;
+
+background: url('img/check_off.png') left/22px no-repeat;
+
+}
+
+input[type=checkbox]:checked + label { background-image: url('img/check_on.png'); }
+
+</style>
+<body>
+<main>
+    <div class="container">
+
+        <div class="py-5 text-center">
+            <h2>복권 구입</h2>
+        </div>
+
+        <form action="item.html" th:action  method="post"><!-- th:action th:object="${user}" th:object="${loginForm}" method="post">-->
+            <div th:if="${err}">
+                <p class="field-error" th:text="${err}">오류 메시지</p>
+            </div>
+            <div>
+                안내사항
+                <ul>
+                    <li>복권 가격은 1,000 포인트입니다.</li>
+                    <li>45개의 번호 중에서 6개를 선택해야 합니다.</li>
+                    <li>0 ~ 5개의 번호를 선택한 상태에서 자동 구매를 하시면 선택한 번호와 나머지 임의의 번호가 조합되어 구매됩니다.</li>
+                    <li>번호 3개가 일치할 경우 당첨금은 5,000 포인트입니다.</li>
+                    <li>번호 4개 이상 일치할 경우 당첨금은 임의로 결정됩니다.</li>
+                </ul>
+            </div>
+
+            <div>
+                <h2>[[${lottoRound.round}]]회</h2>
+                <input type="hidden" th:value="${lottoRound.round}" name="round"/>
+                <h3>판매 기간 : [[${lottoRound.startDate}]] ~ [[${lottoRound.endDate}]]</h3>
+
+            </div>
+            <table>
+                <tr> <!--th:each-->
+                    <td>
+                        <input type="checkbox" id="number1" name="numbers" value="1">
+                        <label for="number1">1</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number2" name="numbers" value="2">
+                        <label for="number2">2</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number3" name="numbers" value="3">
+                        <label for="number3">3</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number4" name="numbers" value="4">
+                        <label for="number4">4</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number5" name="numbers" value="5">
+                        <label for="number5">5</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="number6" name="numbers" value="6">
+                        <label for="number6">6</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number7" name="numbers" value="7">
+                        <label for="number7">7</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number8" name="numbers" value="8">
+                        <label for="number8">8</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number9" name="numbers" value="9">
+                        <label for="number9">9</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number10" name="numbers" value="10">
+                        <label for="number10">10</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="number11" name="numbers" value="11">
+                        <label for="number11">11</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number12" name="numbers" value="12">
+                        <label for="number12">12</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number13" name="numbers" value="13">
+                        <label for="number13">13</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number14" name="numbers" value="14">
+                        <label for="number14">14</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number15" name="numbers" value="15">
+                        <label for="number15">15</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="number16" name="numbers" value="16">
+                        <label for="number16">16</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number17" name="numbers" value="17">
+                        <label for="number17">17</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number18" name="numbers" value="18">
+                        <label for="number18">18</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number19" name="numbers" value="19">
+                        <label for="number19">19</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number20" name="numbers" value="20">
+                        <label for="number20">20</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="number21" name="numbers" value="21">
+                        <label for="number21">21</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number22" name="numbers" value="22">
+                        <label for="number22">22</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number23" name="numbers" value="23">
+                        <label for="number23">23</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number24" name="numbers" value="24">
+                        <label for="number24">24</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number25" name="numbers" value="25">
+                        <label for="number25">25</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="number26" name="numbers" value="26">
+                        <label for="number26">26</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number27" name="numbers" value="27">
+                        <label for="number27">27</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number28" name="numbers" value="28">
+                        <label for="number28">28</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number29" name="numbers" value="29">
+                        <label for="number29">29</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number30" name="numbers" value="30">
+                        <label for="number30">30</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="number31" name="numbers" value="31">
+                        <label for="number31">31</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number32" name="numbers" value="32">
+                        <label for="number32">32</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number33" name="numbers" value="33">
+                        <label for="number33">33</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number34" name="numbers" value="34">
+                        <label for="number34">34</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number35" name="numbers" value="35">
+                        <label for="number35">35</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="number36" name="numbers" value="36">
+                        <label for="number36">36</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number37" name="numbers" value="37">
+                        <label for="number37">37</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number38" name="numbers" value="38">
+                        <label for="number38">38</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number39" name="numbers" value="39">
+                        <label for="number39">39</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number40" name="numbers" value="40">
+                        <label for="number40">40</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="number41" name="numbers" value="41">
+                        <label for="number41">41</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number42" name="numbers" value="42">
+                        <label for="number42">42</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number43" name="numbers" value="43">
+                        <label for="number43">43</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number44" name="numbers" value="44">
+                        <label for="number44">44</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="number45" name="numbers" value="45">
+                        <label for="number45">45</label>
+                    </td>
+                </tr>
+            </table>
+            <button type="button" id="buy">구매하기</button>
+            <button type="button" id="auto">자동 구매하기</button>
+
+        </form>
+        <div th:if="${numberList}">
+            구매한 번호 :
+            <table>
+                <tr th:each="number : ${numberList}">
+                    <td>[[${number}]]</td>
+                </tr>
+            </table>
+        </div>
+
+    </div> <!-- /container -->
+    <script>
+        $('#buy').click(function() {
+            let numbers = $('input[name=numbers]:checked');
+            if (numbers.length != 6) {
+                alert('번호는 6개를 선택하셔야 합니다. 현재 선택한 번호의 개수는' + numbers.length + '개 입니다.');
+                return;
+            }
+
+            numbers.each(function() {
+                console.log($(this).val());
+            });
+            $('form').submit();
+        });
+
+        $('#auto').click(function() {
+            let numbers = $('input[name=numbers]:checked');
+            if (numbers.length > 6) {
+                alert('번호는 최대 6개까지 선택 가능합니다.');
+                return;
+            }
+
+            $('form').submit();
+        });
+    </script>
+</main>
+</body>
+</html>

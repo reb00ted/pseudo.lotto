@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{baseTemplate :: layout (~{::title}, ~{::main})}">
+<head>
+    <meta charset="UTF-8">
+    <title>구매 내역</title>
+</head>
+<body>
+<main>
+    <div class="container">
+        <div class="py-5 text-center">
+            <h2>구매 내역</h2>
+        </div>
+        <div th:if="${err}">
+            <p class="field-error" th:text="${err}">오류 메시지</p>
+        </div>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>회차</th>
+                        <th>구매일시</th>
+                        <th colspan="6">구매번호</th><!--사이즈 지정-->
+                        <th>등수</th>
+                        <th>당첨금</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="lotto : ${lottoList}">
+                        <td th:text="${lotto.round}"></td>
+                        <td th:text="${lotto.buyAt}"></td>
+                        <td th:each="number : ${lotto.numbers}" th:class="${number.isMatched} ? 'bolded underlined'" th:text="${number.number}"></td>
+                        <td th:text="${lotto.ranking}"></td>
+                        <td th:text="${lotto.winnings}"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item" th:classappend="${isFirst} ? 'disabled'">
+                        <a class="page-link" th:href="|purchaseHistory?pageNum=${prevPage}|">이전</a>
+                    </li>
+
+                    <li class="page-item" th:each="pageNum : ${pageList}" th:classappend="${pageNum} eq ${currentPage} ? 'disabled'">
+                        <a class="page-link" th:href="|purchaseHistory?pageNum=${pageNum}|">[[${pageNum}]]</a>
+                    </li>
+
+                    <li class="page-item" th:classappend="${isLast} ? 'disabled'">
+                        <a class="page-link" th:href="|purchaseHistory?pageNum=${nextPage}|">다음</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

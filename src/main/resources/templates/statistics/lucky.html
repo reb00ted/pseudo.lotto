@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{baseTemplate :: layout (~{::title}, ~{::main})}">
+<head>
+  <meta charset="UTF-8">
+  <title>lucky</title>
+</head>
+<body>
+<main>
+  <div class="container">
+    <div class="py-5 text-center">
+      <h2>lucky</h2>
+    </div>
+    <div>
+      축하합니다!
+      <table>
+        <thead>
+          <tr>
+            <th>순위</th>
+            <th>user id</th>
+            <th>당첨 금액</th>
+            <th>사용한 금액</th>
+            <th>순이익</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="statistics, status : ${statisticsList}">
+            <td th:text="${status.count}"></td>
+            <td th:text="${statistics.loginId}"></td>
+            <td th:text="${statistics.earn}"></td>
+            <td th:text="${statistics.spend}"></td>
+            <td th:text="${statistics.netProfit}"></td>
+          </tr>
+        </tbody>
+
+      </table>
+      </form>
+
+    </div>
+  </div>
+</main>
+
+</body>
+</html>

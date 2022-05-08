@@ -1,0 +1,36 @@
+spring:
+  thymeleaf:
+    cache: false
+
+  mvc:
+    throw-exception-if-no-handler-found: true
+    dispatch-options-request: false
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/lotto?serverTimezone=Asia/Seoul
+    username: root
+    password: 1q2w3e4r
+
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    open-in-view: false
+
+server:
+  error:
+    whitelabel:
+      enabled: false
+
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace

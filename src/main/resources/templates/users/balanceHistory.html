@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{baseTemplate :: layout (~{::title}, ~{::main})}">
+<head>
+  <meta charset="UTF-8">
+  <title>포인트 변동 내역</title>
+</head>
+<body>
+<main>
+  <div class="container">
+    <div class="py-5 text-center">
+      <h2>포인트 변동 내역</h2>
+    </div>
+    <div th:if="${err}">
+      <p class="field-error" th:text="${err}">오류 메시지</p>
+    </div>
+    <div>
+      <table>
+        <thead>
+        <tr>
+          <th>구분</th>
+          <th>로또 ID</th>
+          <th>금액</th>
+          <th>거래 일시</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="balanceHistory : ${balanceHistoryList}">
+          <td th:text="${balanceHistory.type}"></td>
+          <td th:text="${balanceHistory.lotto} ? ${balanceHistory.lotto.id}"></td>
+          <td th:text="${balanceHistory.Amount}"></td>
+          <td th:text="${balanceHistory.at}"></td>
+        </tr>
+        </tbody>
+      </table>
+
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item" th:classappend="${isFirst} ? 'disabled'">
+            <a class="page-link" th:href="|balanceHistory?pageNum=${prevPage}|">이전</a>
+          </li>
+
+          <li class="page-item" th:each="pageNum : ${pageList}" th:classappend="${pageNum} eq ${currentPage} ? 'disabled'">
+            <a class="page-link" th:href="|balanceHistory?pageNum=${pageNum}|">[[${pageNum}]]</a>
+          </li>
+
+          <li class="page-item" th:classappend="${isLast} ? 'disabled'">
+            <a class="page-link" th:href="|balanceHistory?pageNum=${nextPage}|">다음</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</main>
+
+</body>
+</html>

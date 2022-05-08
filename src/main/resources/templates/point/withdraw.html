@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{baseTemplate :: layout (~{::title}, ~{::main})}">
+<head>
+    <meta charset="UTF-8">
+    <title>포인트 출금</title>
+</head>
+<body>
+<main>
+    <div class="container">
+        <div class="py-5 text-center">
+            <h2>포인트 출금</h2>
+        </div>
+        <div>
+            현재 출금 가능한 포인트 : [[${user.balance}]]
+            <form th:action method="post">
+                출금할 포인트 : <input type="number" name="point" value="1000" min="1000" th:max="${user.balance}" step="1000" required="true">
+                <input type="submit">
+            </form>
+
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
