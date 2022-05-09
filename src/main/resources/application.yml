@@ -9,7 +9,7 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/lotto?serverTimezone=Asia/Seoul
-    username: root
+    username: lotto
     password: 1q2w3e4r
 
   jpa:

@@ -133,14 +133,12 @@ public class LottoRoundScheduler {
                 userBalanceIncrease.put(userId, userBalanceIncrease.getOrDefault(userId, 0L) + winnings.get(rank - 1));
                 BalanceHistory bh = new BalanceHistory(lotto.getUser(), TransactionType.WINNING, lotto, winnings.get(rank - 1));
                 balanceHistoryRepository.save(bh);
-                Statistics statistics = statisticsRepository.findById(userId).get();
+                Statistics statistics = statisticsRepository.findByUserId(userId);
                 statistics.setEarn(statistics.getEarn() + winnings.get(rank - 1));
             }
         };
 
         // 업데이트하기전에 User 와 Statistics 엔티티 락
-        System.out.println(userBalanceIncrease.keySet().size());
-        System.out.println("제발");
         for (Long userId : userBalanceIncrease.keySet()) {
             Statistics statistics = statisticsRepository.findWithLockAndJoinByUserId(userId);
             Long money = userBalanceIncrease.get(userId);
