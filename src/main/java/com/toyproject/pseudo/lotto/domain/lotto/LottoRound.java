@@ -1,5 +1,6 @@
 package com.toyproject.pseudo.lotto.domain.lotto;
 
+import com.toyproject.pseudo.lotto.domain.common.CreationTimeEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,7 +18,7 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @NoArgsConstructor
-public class LottoRound {
+public class LottoRound extends CreationTimeEntity {
     @Id
     private Long round;
 

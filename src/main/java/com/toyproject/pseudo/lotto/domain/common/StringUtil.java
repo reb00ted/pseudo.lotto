@@ -2,7 +2,13 @@ package com.toyproject.pseudo.lotto.domain.common;
 
 public abstract class StringUtil {
     public static String toMoneyFormat(long amount) {
-        char[] array = String.valueOf(amount).toCharArray();
+        boolean negative = amount < 0;
+        char[] array;
+        if (negative) {
+            array = String.valueOf(amount).substring(1).toCharArray();
+        } else {
+            array = String.valueOf(amount).toCharArray();
+        }
         StringBuilder sb = new StringBuilder();
 
         int count = 0;
@@ -16,6 +22,9 @@ public abstract class StringUtil {
         }
 
         sb.reverse();
+        if (negative) {
+            return "-" + sb.toString();
+        }
         return sb.toString();
     }
 }
