@@ -133,8 +133,6 @@ public class LottoRoundScheduler {
                 userBalanceIncrease.put(userId, userBalanceIncrease.getOrDefault(userId, 0L) + winnings.get(rank - 1));
                 BalanceHistory bh = new BalanceHistory(lotto.getUser(), TransactionType.WINNING, lotto, winnings.get(rank - 1));
                 balanceHistoryRepository.save(bh);
-                Statistics statistics = statisticsRepository.findByUserId(userId);
-                statistics.setEarn(statistics.getEarn() + winnings.get(rank - 1));
             }
         };
 

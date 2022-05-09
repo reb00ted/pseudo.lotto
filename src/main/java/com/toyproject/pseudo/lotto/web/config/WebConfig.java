@@ -23,13 +23,13 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(new LoginCheckInterceptor())
                 .order(1)
                 .addPathPatterns("/**")
-                .excludePathPatterns("/", "/home", "/users/join", "/users/login", "/css/**", "/*.ico", "/error", "/error/**");
+                .excludePathPatterns("/", "/home", "/users/join", "/users/login", "/css/**", "/*.ico", "/error", "/error/**",
+                        "/statistics/**", "/lotto/pastHistory");
 
         registry.addInterceptor(new UserInfoInterceptor(userRepository))
                 .order(2)
                 .addPathPatterns("/**")
                 .excludePathPatterns("/css/**", "/*.ico", "/error", "/error/**");
-
     }
 
     @Bean
