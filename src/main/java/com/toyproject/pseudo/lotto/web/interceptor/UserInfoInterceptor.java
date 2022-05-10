@@ -24,7 +24,6 @@ public class UserInfoInterceptor implements HandlerInterceptor {
             Long id = Long.parseLong(String.valueOf(session.getAttribute("userId")));
             Optional<User> user = userRepository.findById(id);
             if (user.isPresent()) {
-                System.out.println(user.toString());
                 modelAndView.addObject("user", user.get());
                 modelAndView.addObject("balance", StringUtil.toMoneyFormat(user.get().getBalance()));
             }

@@ -26,12 +26,10 @@ public class LottoRoundDto {
         this.round = round.getRound();
         this.startDate = round.getStartDate();
         this.endDate = round.getEndDate();
-        System.out.println("로또 번호 추출");
         this.lottoWinningNumbers = round.getLottoWinningNumbers().stream()
                 .map(lottoWinningNumber -> lottoWinningNumber.getNumber())
                 .sorted()
                 .collect(Collectors.toList());
-        System.out.println("당첨 금액 추출");
         this.lottoWinnings = round.getLottoWinnings().stream()
                 .map(lottoWinnings -> lottoWinnings.getWinnings())
                 .sorted(Comparator.reverseOrder())

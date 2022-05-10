@@ -12,7 +12,7 @@
             <h2>포인트 출금</h2>
         </div>
         <div>
-            현재 출금 가능한 포인트 : [[${user.balance}]]
+            현재 출금 가능한 포인트 : [[${balance}]]
             <form th:action method="post">
                 출금할 포인트 : <input type="number" name="point" value="1000" min="1000" th:max="${user.balance}" step="1000" required="true">
                 <input type="submit">

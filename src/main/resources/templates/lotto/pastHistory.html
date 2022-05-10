@@ -27,6 +27,7 @@
                 <thead>
                     <tr>
                         <th rowspan="2">회차</th>
+                        <th rowspan="2" width>판매기간</th>
                         <th rowspan="2" colspan="6">당첨 번호</th>
                         <th colspan="5">당첨 금액</th>
                     </tr>
@@ -41,6 +42,7 @@
                 <tbody>
                     <tr>
                         <td th:text="${lottoRound.round}"></td>
+                        <td th:text="|${lottoRound.startDate} ~ ${lottoRound.endDate}|"></td>
                         <td th:text="${lottoRound.lottoWinningNumbers[0]}"></td>
                         <td th:text="${lottoRound.lottoWinningNumbers[1]}"></td>
                         <td th:text="${lottoRound.lottoWinningNumbers[2]}"></td>
