@@ -30,11 +30,11 @@
 - 복권 구매 내역 조회
 ![복권 구매내역](https://user-images.githubusercontent.com/96247255/170872562-1a033b44-20d0-4e08-be9c-05b0a0272a9f.PNG)
 
-- 포인트 변동 내역 확인
+- 포인트 변동 내역 조회
 ![포인트 변동 내역 조회](https://user-images.githubusercontent.com/96247255/170872573-58f92276-850f-4478-b2f5-b3cc7e75dd53.PNG)
 ![포인트 변동 내역 조회2](https://user-images.githubusercontent.com/96247255/170872577-13933940-d4b6-4ab3-bd67-d15f40f4ea35.PNG)
 
-- 포인트 이익이 많은 사람들조회
+- 포인트 이익이 많은 사람들 조회
 ![lucky](https://user-images.githubusercontent.com/96247255/170872602-f95b9ee5-ba31-42a7-846b-e571154560b6.PNG)
 
 - 포인트 손해가 많은 사람들 조회
